@@ -1,0 +1,308 @@
+###
+### SCALE: 100
+### CSLUVERSION: 2.0.0
+###
+set Coord "-670.0 1090.0 32 32"
+
+##### ROOT SCREEN
+set offsetX [expr $x - -670.0]
+set offsetY [expr $y - 1090.0]
+set p $ObjectTypes(activeScreen)
+
+# subnet_72
+set x0 [expr -670.0 + $offsetX] 
+set y0 [expr 1090.0 + $offsetY] 
+set obvar [newO subnet $x0 $y0 {no 1}]
+set r(subnet_72) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(stream) {live}
+set ob(repairID) {.screen1}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {toggle}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+
+##### SUBDIALOGUE
+set offsetX 0
+set offsetY 0
+set id [registerScreen "toggle"]
+lappend newScreens subnet_72 $id
+recordActiveScreen $id
+
+# enter_154
+set x0 [expr -280 + $offsetX] 
+set y0 [expr -30 + $offsetY] 
+set obvar [newO enter $x0 $y0 {no 1}]
+set r(enter_154) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {enter}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+
+# prect_155
+set x0 [expr -280 + $offsetX] 
+set y0 [expr 150 + $offsetY] 
+set obvar [newO prect $x0 $y0 {no 2}]
+set r(prect_155) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {current_state}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{{$state == "On"}} {} {}} {{{$state == "Off"}} {} {}}}
+set ob(grammar) {{} {}}
+
+# queryone_156
+set x0 [expr -440 + $offsetX] 
+set y0 [expr 240 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 2}]
+set r(queryone_156) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(recogportType,0) {Words}
+set ob(recogportType,1) {Words}
+set ob(override:repair) {0}
+set ob(override:tts) {0}
+set ob(prompt,ttsText) {The $room $item are currently $state would you like to switch it off?}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {The $room $item are currently $state would you like to switch it off?}
+set ob(dynamicWords) {{Yes {j E s}} {No {n oU}}}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(portType,1) {Undefined}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {on}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{Yes {} {{{j E s}}}} {No {} {{{n oU}}}}}
+set ob(grammar) {{{} {}} {{} {}}}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+
+# queryone_157
+set x0 [expr -120 + $offsetX] 
+set y0 [expr 240 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 2}]
+set r(queryone_157) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(action1) {set lights [db "select Lights from Common where Room = '$room'"]
+regsub {\{} $lights {} lights
+regsub {\}} $lights {} lights
+set light [lindex $lights 0]}
+set ob(recogportType,0) {Words}
+set ob(recogportType,1) {Words}
+set ob(override:repair) {0}
+set ob(override:tts) {0}
+set ob(prompt,ttsText) {The $room $item are currently $state, would you like to switch them on?}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {The $room $item are currently $state, would you like to switch them on?}
+set ob(dynamicWords) {{No {n oU}} {Yes {j E s}}}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(portType,1) {Undefined}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {off}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{No {} {{{n oU}}}} {Yes {} {{{j E s}}}}}
+set ob(grammar) {{{} {}} {{} {}}}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+
+# action_158
+set x0 [expr -450 + $offsetX] 
+set y0 [expr 400 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_158) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_off}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {db "update Common set $item = 'Off' where Room = '$room'"}
+
+# exit_159
+set x0 [expr -270 + $offsetX] 
+set y0 [expr 340 + $offsetY] 
+set obvar [newO exit $x0 $y0 {no 0}]
+set r(exit_159) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(override:tts) {0}
+set ob(exitStatus) {continue}
+set ob(prompt,ttsText) {The lights are now $light}
+set ob(prompt) {The lights are now $light}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {return:continue}
+set ob(dtmf,interrupt) {0}
+
+# action_160
+set x0 [expr -110 + $offsetX] 
+set y0 [expr 400 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_160) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_on}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {db "update Common set $item = 'On' where Room = '$room'"}
+
+# action_161
+set x0 [expr -270 + $offsetX] 
+set y0 [expr 470 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_161) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {change_state}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {set lights [db "select Lights from Common where Room = '$room'"]
+regsub {\{} $lights {} lights
+regsub {\}} $lights {} lights
+set light [lindex $lights 0]}
+
+# action_162
+set x0 [expr -280 + $offsetX] 
+set y0 [expr 60 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_162) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {get_current_state}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {set currentState [db "select $item from Common where Room = '$room'"]
+regsub {\{} $currentState {} currentState
+regsub {\}} $currentState {} currentState
+set state [lindex $currentState 0]}
+
+####### CONNECTIONS
+connect r enter_154 action_162 0 -264.0 48.0 -264.0 42.0 -264.0 45.0 $offsetX $offsetY
+connect r prect_155 queryone_156 0 -274.0 228.0 -349.0 222.0 -424.0 225.0 $offsetX $offsetY
+connect r action_162 prect_155 0 -264.0 138.0 -264.0 132.0 -264.0 135.0 $offsetX $offsetY
+connect r action_161 exit_159 0 -294.0 548.0 -294.0 325.0 -254.0 325.0 $offsetX $offsetY
+connect r action_160 action_161 0 -94.0 478.0 -174.0 462.0 -254.0 455.0 $offsetX $offsetY
+connect r queryone_157 action_160 1 -94.0 318.0 -94.0 347.0 -94.0 385.0 $offsetX $offsetY
+connect r queryone_156 action_158 0 -434.0 318.0 -434.0 347.0 -434.0 385.0 $offsetX $offsetY
+connect r prect_155 queryone_157 1 -254.0 228.0 -179.0 222.0 -104.0 225.0 $offsetX $offsetY
+connect r action_158 action_161 0 -434.0 478.0 -344.0 462.0 -254.0 455.0 $offsetX $offsetY
+connect r queryone_157 exit_159 0 -114.0 318.0 -184.0 317.0 -254.0 325.0 $offsetX $offsetY
+connect r queryone_156 exit_159 1 -414.0 318.0 -334.0 317.0 -254.0 325.0 $offsetX $offsetY
+recordActiveScreen $p
+
+#----------------------------------------------------------------------------
+array set config {faces {}}
+

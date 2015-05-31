@@ -1,0 +1,504 @@
+###
+### SCALE: 100
+### CSLUVERSION: 2.0.0
+###
+set Coord "-580.0 1650.0 32 32"
+
+##### ROOT SCREEN
+set offsetX [expr $x - -580.0]
+set offsetY [expr $y - 1650.0]
+set p $ObjectTypes(activeScreen)
+
+# subnet_76
+set x0 [expr -580.0 + $offsetX] 
+set y0 [expr 1650.0 + $offsetY] 
+set obvar [newO subnet $x0 $y0 {no 1}]
+set r(subnet_76) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(stream) {live}
+set ob(repairID) {.screen1}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {tv}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+
+##### SUBDIALOGUE
+set offsetX 0
+set offsetY 0
+set id [registerScreen "tv"]
+lappend newScreens subnet_76 $id
+lappend newScreens subnet_82 $id
+lappend newScreens subnet_83 $id
+recordActiveScreen $id
+
+# enter_187
+set x0 [expr -30 + $offsetX] 
+set y0 [expr 30 + $offsetY] 
+set obvar [newO enter $x0 $y0 {no 1}]
+set r(enter_187) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {enter}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+
+# action_188
+set x0 [expr -30 + $offsetX] 
+set y0 [expr 150 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_188) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {get_tv_state}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {set currentState [db "select Power from TV where Room = '$room'"]
+regsub {\{} $currentState {} currentState
+regsub {\}} $currentState {} currentState
+set state [lindex $currentState 0]}
+
+# prect_189
+set x0 [expr -30 + $offsetX] 
+set y0 [expr 270 + $offsetY] 
+set obvar [newO prect $x0 $y0 {no 2}]
+set r(prect_189) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {tv_state}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{{$state == "Off"}} {} {}} {{{$state == "On"}} {} {}}}
+set ob(grammar) {{} {}}
+
+# queryone_190
+set x0 [expr -150 + $offsetX] 
+set y0 [expr 360 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 2}]
+set r(queryone_190) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(recogportType,0) {Words}
+set ob(recogportType,1) {Words}
+set ob(override:repair) {0}
+set ob(override:tts) {0}
+set ob(prompt,ttsText) {Would you like to switch the tv on?}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {Would you like to switch the tv on?}
+set ob(dynamicWords) {{No {n oU}} {Yes {j E s}} {Please {pc ph l i: z}}}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(portType,1) {Undefined}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_tv_on}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{No {} {{{n oU}}}} {{Yes Please} {} {{{j E s}} {{pc ph l i: z}}}}}
+set ob(grammar) {{{} {}} {{} {}}}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+
+# exit_191
+set x0 [expr -160 + $offsetX] 
+set y0 [expr 500 + $offsetY] 
+set obvar [newO exit $x0 $y0 {no 0}]
+set r(exit_191) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(exitStatus) {continue}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {return:continue}
+set ob(dtmf,interrupt) {0}
+
+# queryone_192
+set x0 [expr 130 + $offsetX] 
+set y0 [expr 380 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 4}]
+set r(queryone_192) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(recogportType,0) {Words}
+set ob(recogportType,1) {Words}
+set ob(recogportType,2) {Words}
+set ob(override:repair) {0}
+set ob(override:tts) {0}
+set ob(recogportType,3) {Words}
+set ob(prompt,ttsText) {The TV is currently on $channel, and the volume is currently at $volume percent. Which option would you like to change?}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {The TV is currently on $channel, and the volume is currently at $volume percent. Which option would you like to change?}
+set ob(dynamicWords) {{exit {E gc g z I tc th}} {back {bc b @ kc kh}} {close {kc kh l oU s}} {finish {f I n I S}} {volume {v A l j u m}} {change_volume {tSc tS ei n dZc dZ [.pau] v A l j u m}} {channel {tSc tS @ n ^ l}} {station {s tc th ei S ^ n}} {change_channel {tSc tS ei n dZc dZ [.pau] tSc tS @ n ^ l}} {change_station {tSc tS ei n dZc dZ [.pau] s tc th ei S ^ n}} {power {pc ph aU 3r}}}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(portType,1) {Undefined}
+set ob(package) {Base}
+set ob(portType,2) {Undefined}
+set ob(portType,3) {Undefined}
+set ob(override:caption) {0}
+set ob(name) {select_an_option}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{exit back close finish} {} {{{E gc g z I tc th}} {{bc b @ kc kh}} {{kc kh l oU s}} {{f I n I S}}}} {{volume {change volume}} {} {{{v A l j u m}} {{tSc tS ei n dZc dZ [.pau] v A l j u m}}}} {{channel station {change channel} {change station}} {} {{{tSc tS @ n ^ l}} {{s tc th ei S ^ n}} {{tSc tS ei n dZc dZ [.pau] tSc tS @ n ^ l}} {{tSc tS ei n dZc dZ [.pau] s tc th ei S ^ n}}}} {power {} {{{pc ph aU 3r}}}}}
+set ob(grammar) {{{} {}} {{} {}} {{} {}} {{} {}}}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+
+# action_193
+set x0 [expr -10 + $offsetX] 
+set y0 [expr 380 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_193) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_on}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {db "update TV set Power = 'On' where Room = '$room'"}
+
+# action_194
+set x0 [expr 130 + $offsetX] 
+set y0 [expr 260 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_194) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {get_properties}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {set currentState [db "select Power, Channel, Volume from TV where Room = '$room'"]
+regsub {\{} $currentState {} currentState
+regsub {\}} $currentState {} currentState
+set state [lindex $currentState 0]
+set channel [lindex $currentState 1]
+set volume [lindex $currentState 2]}
+
+# digit_195
+set x0 [expr -50 + $offsetX] 
+set y0 [expr 570 + $offsetY] 
+set obvar [newO digit $x0 $y0 {no 1}]
+set r(digit_195) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Grammar}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(override:tts) {0}
+set ob(override:repair) {0}
+set ob(prompt,ttsText) {Specify a new volume}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {Specify a new volume}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {get_new_volume}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{zero oh one two three four five six seven eight nine *sil *any} {} {{z I 9r oU} oU {w ^ n [^3]} {tc th u} {T 9r i:} {f >r} {f aI v} {s I kc ks} {s E v ^2 n [^3]} {ei tc [th]} {n aI n [^3]} .pau .garbage}}}
+set ob(grammar) {{digit {$digit = zero | oh | one | two | three | four | 
+         five | six | seven | eight | nine;
+$sep = *sil%% [*any%%] *sil%%;
+$grammar = [$sep] < $digit [$sep] > [$sep];}}}
+set ob(program) {regsub -all { } $get_new_volume(recog) {} get_new_volume(recog)}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+set ob(garbage) {5}
+
+# action_196
+set x0 [expr -50 + $offsetX] 
+set y0 [expr 670 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_196) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {set_new_volume}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {db "update TV set Volume = '$get_new_volume(recog)' where Room = '$room'"}
+
+# digit_197
+set x0 [expr 130 + $offsetX] 
+set y0 [expr 570 + $offsetY] 
+set obvar [newO digit $x0 $y0 {no 1}]
+set r(digit_197) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Grammar}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(override:tts) {0}
+set ob(override:repair) {0}
+set ob(prompt,ttsText) {Specify a new channel}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {Specify a new channel}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {get_new_channel}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{zero oh one two three four five six seven eight nine *sil *any} {} {{z I 9r oU} oU {w ^ n [^3]} {tc th u} {T 9r i:} {f >r} {f aI v} {s I kc ks} {s E v ^2 n [^3]} {ei tc [th]} {n aI n [^3]} .pau .garbage}}}
+set ob(grammar) {{digit {$digit = zero | oh | one | two | three | four | 
+         five | six | seven | eight | nine;
+$sep = *sil%% [*any%%] *sil%%;
+$grammar = [$sep] < $digit [$sep] > [$sep];}}}
+set ob(program) {regsub -all { } $get_new_channel(recog) {} get_new_channel(recog)}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+set ob(garbage) {5}
+
+# action_198
+set x0 [expr 110 + $offsetX] 
+set y0 [expr 710 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_198) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {set_new_channel}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {set newChannel [lindex $new_channel(recog) 0]
+db "update TV set Channel = '$newChannel' where Room = '$room'"}
+
+# action_199
+set x0 [expr 300 + $offsetX] 
+set y0 [expr 600 + $offsetY] 
+set obvar [newO action $x0 $y0 {no 1}]
+set r(action_199) $obvar
+upvar #0 $obvar ob
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(override:tts) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_off}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{} {} {}}}
+set ob(grammar) {{}}
+set ob(program) {db "update TV set Power = 'Off' where Room = '$room'"}
+
+# queryone_200
+set x0 [expr 270 + $offsetX] 
+set y0 [expr 470 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 2}]
+set r(queryone_200) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Tree}
+set ob(override:recognizer) {0}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(recogportType,0) {Words}
+set ob(recogportType,1) {Words}
+set ob(override:tts) {0}
+set ob(repairStatus) {default}
+set ob(dynamicWords) {{yes {j E s}} {No {n oU}}}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(portType,1) {Undefined}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {turn_tv_off}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{yes {} {{{j E s}}}} {No {} {{{n oU}}}}}
+set ob(grammar) {{{} {}} {{} {}}}
+
+# queryone_201
+set x0 [expr 180 + $offsetX] 
+set y0 [expr 520 + $offsetY] 
+set obvar [newO queryone $x0 $y0 {no 1}]
+set r(queryone_201) $obvar
+upvar #0 $obvar ob
+set ob(gif_original) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/base/gif/generic.gif}
+set ob(recogType) {Grammar}
+set ob(override:recognizer) {0}
+set ob(changetrigger) {5}
+set ob(dtmf,mode) {off}
+set ob(prompt,type) {tts}
+set ob(gif_tmmods) {C:/Program Files/CSLU/Toolkit/2.0/apps/rad/packages/Tucker-Maxon/gif_alt/generic.gif}
+set ob(override:sdet) {0}
+set ob(override:vumeter) {0}
+set ob(prompt,markupText) {<SABLE></SABLE>
+}
+set ob(recogportType,0) {Words}
+set ob(override:repair) {0}
+set ob(override:tts) {0}
+set ob(prompt,ttsText) {Please select a new channel}
+set ob(repairStatus) {default}
+set ob(changerate) {5}
+set ob(prompt) {Please select a new channel}
+set ob(dynamicWords) {{BBC1 {bc b i: bc b i: s i: w ^ n}} {BBC2 {bc b i: bc b i: s i: tc th u}} {Channel4 {tSc tS @ n & l f oU 9r}} {Channel5 {tSc tS @ n & l f aI v}} {RTE1 {9r tc th i: w ^ n}} {RTE2 {9r tc th i: tc th u}} {UTV {^ tc th v}}}
+set ob(dyn:recog) {0}
+set ob(prompt,recordFlag) {0}
+set ob(bargein) {off}
+set ob(portType,0) {Undefined}
+set ob(package) {Base}
+set ob(override:caption) {0}
+set ob(name) {new_channel}
+set ob(dtmf,interrupt) {0}
+set ob(words) {{{BBC1 BBC2 Channel4 Channel5 RTE1 RTE2 UTV} {} {{{bc b i: bc b i: s i: w ^ n}} {{bc b i: bc b i: s i: tc th u}} {{tSc tS @ n & l f oU 9r}} {{tSc tS @ n & l f aI v}} {{9r tc th i: w ^ n}} {{9r tc th i: tc th u}} {{^ tc th v}}}}}
+set ob(grammar) {{ChannelSelections {$channel = BBC1 | BBC2 | UTV | Channel4 | Channel5 | RTE1 | RTE2;}}}
+set ob(recognizer) {name adult_english_16khz_0.ob infoDial American infoRate 16000}
+
+####### CONNECTIONS
+connect r queryone_200 action_194 1 256.0 548.0 221.0 392.0 186.0 245.0 $offsetX $offsetY
+connect r queryone_192 exit_191 0 116.0 458.0 -14.0 467.0 -144.0 485.0 $offsetX $offsetY
+connect r queryone_192 queryone_200 3 176.0 458.0 231.0 452.0 286.0 455.0 $offsetX $offsetY
+connect r action_193 action_194 0 46.0 458.0 76.0 347.0 106.0 245.0 $offsetX $offsetY
+connect r action_194 queryone_192 0 146.0 338.0 146.0 347.0 146.0 365.0 $offsetX $offsetY
+connect r queryone_201 action_198 0 196.0 598.0 161.0 642.0 126.0 695.0 $offsetX $offsetY
+connect r enter_187 action_188 0 -14.0 108.0 -14.0 117.0 -14.0 135.0 $offsetX $offsetY
+connect r prect_189 action_194 1 36.0 348.0 71.0 292.0 106.0 245.0 $offsetX $offsetY
+connect r digit_195 action_196 0 -34.0 648.0 -34.0 647.0 -34.0 655.0 $offsetX $offsetY
+connect r action_196 action_194 0 6.0 748.0 56.0 492.0 106.0 245.0 $offsetX $offsetY
+connect r queryone_192 digit_195 1 136.0 458.0 51.0 502.0 -34.0 555.0 $offsetX $offsetY
+connect r queryone_200 action_199 0 276.0 548.0 296.0 562.0 316.0 585.0 $offsetX $offsetY
+connect r queryone_190 exit_191 0 -144.0 438.0 -144.0 457.0 -144.0 485.0 $offsetX $offsetY
+connect r action_188 prect_189 0 -14.0 228.0 -14.0 237.0 -14.0 255.0 $offsetX $offsetY
+connect r queryone_190 action_193 1 -84.0 438.0 -59.0 397.0 -34.0 365.0 $offsetX $offsetY
+connect r queryone_192 queryone_201 2 156.0 458.0 176.0 477.0 196.0 505.0 $offsetX $offsetY
+connect r action_198 action_194 0 86.0 788.0 86.0 245.0 146.0 245.0 $offsetX $offsetY
+connect r action_199 exit_191 0 276.0 678.0 86.0 577.0 -104.0 485.0 $offsetX $offsetY
+connect r prect_189 queryone_190 0 -24.0 348.0 -79.0 342.0 -134.0 345.0 $offsetX $offsetY
+recordActiveScreen $p
+
+#----------------------------------------------------------------------------
+array set config {faces {}}
+
